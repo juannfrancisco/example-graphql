@@ -1,0 +1,9 @@
+[submodule "ms-api-events"]
+	path = ms-api-events
+	url = https://github.com/juannfrancisco/ms-api-events.git
+[submodule "ms-dal-speakers"]
+	path = ms-dal-speakers
+	url = https://github.com/juannfrancisco/ms-dal-speakers.git
+[submodule "ms-dal-talks"]
+	path = ms-dal-talks
+	url = https://github.com/juannfrancisco/ms-dal-talks.git
