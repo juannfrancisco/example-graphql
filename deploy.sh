@@ -1,4 +1,5 @@
 #!/bin/bash
+git submodule update --init --recursive
 
 #Create Cluster Kubernetes
 gcloud container clusters create events-cluster \
@@ -12,23 +13,23 @@ cd ~/example-graphql/ms-dal-talks
 mvn compile jib:dockerBuild
 docker push gcr.io/kubernetes-101-227215/ms-dal-talks:latest
 
-kubectl create -f deploy/deployment.yaml
-kubectl create -f deploy/services.yaml
+kubectl create -f ~/example-graphql/ms-dal-talks/deploy/deployment.yaml
+kubectl create -f ~/example-graphql/ms-dal-talks/deploy/services.yaml
 
 
 cd ~/example-graphql/ms-dal-speakers
 mvn compile jib:dockerBuild
 docker push gcr.io/kubernetes-101-227215/ms-dal-speakers:latest
-kubectl create -f deploy/deployment.yaml
-kubectl create -f deploy/services.yaml
+kubectl create -f ~/example-graphql/ms-dal-speakers/deploy/deployment.yaml
+kubectl create -f ~/example-graphql/ms-dal-speakers/deploy/services.yaml
 
 
 cd ~/example-graphql/ms-api-events
 mvn compile jib:dockerBuild
 docker push gcr.io/kubernetes-101-227215/ms-dal-speakers:latest
-kubectl create -f deploy/configmap.yaml
-kubectl create -f deploy/deployment.yaml
-kubectl create -f deploy/services.yaml
+kubectl create -f ~/example-graphql/ms-api-events/deploy/configmap.yaml
+kubectl create -f ~/example-graphql/ms-api-events/deploy/deployment.yaml
+kubectl create -f ~/example-graphql/ms-api-events/deploy/services.yaml
 
 
 #Deploy on cloud enpoint
