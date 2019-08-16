@@ -1,0 +1,17 @@
+version: '3'
+services:  
+  dal-speakers:
+    image: "gcr.io/${PROJECT_ID}/ms-dal-speakers"
+    ports:
+      - "9091:9091"
+  dal-talks:
+    image: "gcr.io/${PROJECT_ID}/ms-dal-talks"
+    ports:
+      - "9092:9092"
+  api-events:
+    image: "gcr.io/${PROJECT_ID}/ms-api-events"
+    ports:
+      - "9093:9093"
+    env:
+      - API_SPEAKERS: "http://dal-speakers:9091/speakers"
+      - API_TALKS: "http://dal-talks:9092/talks"
